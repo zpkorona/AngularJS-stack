@@ -1,0 +1,167 @@
+## nodejs instalacja
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+##
+## git clone angular-phonecat demo
+git clone --depth=16 https://github.com/angular/angular-phonecat.git
+cd angular-phonecat
+npm install
+# npm audit fix
+# sudo npm install --global http-server
+# http-server ./app
+##
+npm start
+#http://localhost:8000/
+#ip addr show
+npm test
+#npm run update-deps
+git checkout -f step-0
+########################################
+<html ng-app>
+<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+<script src="lib/angular/angular.js"></script>
+<script src="app.js"></script>
+<body ng-controller="PhoneListController">
+<li ng-repeat="phone in phones">
+<p>{{phone.snippet}}</p>
+
+app/app.js
+var phonecatApp = angular.module('phonecatApp', []);
+
+// Define the `PhoneListController` controller on the `phonecatApp` module
+phonecatApp.controller('PhoneListController', function PhoneListController($scope) {
+  $scope.phones = [
+    {
+      name: 'Nexus S',
+      snippet: 'Fast just got faster with Nexus S.'
+    }, {
+      name: 'Motorola XOOM™ with Wi-Fi',
+      snippet: 'The Next, Next Generation tablet.'
+    }, {
+      name: 'MOTOROLA XOOM™',
+      snippet: 'The Next, Next Generation tablet.'
+    }
+  ];
+});
+
+##########
+#testing
+app/app.spec.js:
+describe('PhoneListController', function() {
+  beforeEach(module('phonecatApp'));
+  it('should create a `phones` model with 3 phones', inject(function($controller) {
+    var scope = {};
+    var ctrl = $controller('PhoneListController', {$scope: scope});
+    expect(scope.phones.length).toBe(3);
+  }));
+});
+
+#######################################################
+struktura plików
+
+app/
+  nazwa-komponentu/
+    nazwa-komponentu.component.js
+    nazwa-komponentu.component.spec.js
+    nazwa-komponentu.module.js
+    nazwa-komponentu.template.html
+  app.css
+  app.module.js
+  index.html
+
+##  index.html ################## ##################
+<!doctype html>
+<html ng-app="aplikacjaApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Phone Gallery</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="lib/angular/angular.js"></script>
+    <script src="app.module.js"></script>
+    <script src="phone-list/nazwa-komponentu.module.js"></script>
+    <script src="phone-list/nazwa-komponentu.component.js"></script>
+  </head>
+  <body>
+    <!-- Use a custom component to render a list of phones -->
+    <nazwa-komponentu></nazwa-komponentu>
+  </body>
+</html>
+
+##  app.css ################## ##################
+body {
+  padding-top: 20px;
+}
+
+##  app.module.js ################## ##################
+'use strict';
+angular.module('aplikacjaApp', ['nazwaKomponentu']); //<html ng-app="aplikacjaApp">
+
+##    nazwa-komponentu.template.html ################## ##################
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <p>
+        Search: <input ng-model="$ctrl.search" />
+      </p>
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.order">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+        </select>
+      </p>
+      <p>
+        Liczba wszystkich fonów: {{$ctrl.number}}
+      </p>
+    </div>
+    <div class="col-md-10">
+      <ul class="phones">
+        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+          <a href="#!/phones/{{phone.id}}" class="thumb">
+            <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+          </a>
+          <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
+          <p>{{phone.snippet}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+##    nazwa-komponentu.module.js ################## ##################
+'use strict';
+angular.module('nazwaKomponentu', []);
+
+##    nazwa-komponentu.component.js ################## ##################
+'use strict';
+angular.
+  module('nazwaKomponentu').
+  component('nazwaKomponentu', {
+    templateUrl: 'nazwa-komponentu/nazwa-komponentu.template.html',
+    //controller: [$http, NazwaKomponentuController]
+    controller: function NazwaKomponentuController($http) {
+      var self = this;
+      this.orderProp = 'age';
+      this.number = 0;
+      $http.
+        get('phones/phones.json').
+        then(function(response) {
+          self.phones = response.data;
+        }).
+        then(()=>{self.number=self.phones.length;});
+    }
+  });
+
+##    nazwa-komponentu.component.spec.js ################## ##################
+'use strict';
+describe('nazwaKomponentu', function() {
+  beforeEach(module('nazwaKomponentu'));
+  describe('NazwaKomponentuController', function() {
+    it('should create a `phones` model with 3 phones', inject(function($componentController) {
+      var ctrl = $componentController('nazwaKomponentu');
+      expect(ctrl.phones.length).toBe(3);
+    }));
+  });
+});
+

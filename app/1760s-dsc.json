@@ -1,0 +1,43 @@
+[
+    {"xpos":"2", "ypos":"1", "len":"4", "rng":"1001:1150, 2001:2150", "ident":"true", "lfill":"0", "id":"id"},
+
+    {"xpos":"10", "ypos":"3", "len":"1", "rng":"012", "dft":"1", "ltxt":"Wa/Kr", "id":"q1"},
+
+    {"xpos":"9", "ypos":"5", "len":"2", "rng":"0:11", "dft":"11", "lfill":"0", "ltxt":"A.zat", "flt":{"fld":"q3","rng":"11"}, "id":"qa_1"},
+    {"xpos":"9", "ypos":"6", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_2"},
+    {"xpos":"9", "ypos":"7", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_3"},
+    {"xpos":"9", "ypos":"8", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_4"},
+    {"xpos":"9", "ypos":"9", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_5"},
+    {"xpos":"9", "ypos":"10", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_6"},
+    {"xpos":"9", "ypos":"11", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_7"},
+    {"xpos":"9", "ypos":"12", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_8"},
+    {"xpos":"9", "ypos":"13", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_9"},
+    {"xpos":"9", "ypos":"14", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_10"},
+    {"xpos":"9", "ypos":"15", "len":"2", "rng":"0:10", "dft":"0", "lfill":"0", "flt":{"fld":"q3","rng":"0"}, "id":"qa_11"},
+
+    {"xpos":"10", "ypos":"17", "len":"1", "rng":"02", "dft":"2", "ltxt":"B.", "id":"qb"},
+    {"xpos":"10", "ypos":"18", "len":"1", "rng":"02", "dft":"2", "ltxt":"C.", "id":"qc"},
+    {"xpos":"10", "ypos":"19", "len":"1", "rng":"01", "dft":"1", "ltxt":"D.", "id":"qd"},
+
+    {"xpos":"10", "ypos":"21", "len":"1", "rng":"01", "dft":"1", "ltxt":"E.wiek", "id":"q2"},
+
+    {"xpos":"10", "ypos":"23", "len":"1", "rng":"012", "dft":"0", "ltxt":"F.plec", "id":"q3"}
+,
+
+    {"xpos":"10", "ypos":"1", "len":"1", "rng":"0345", "dft":"0", "ltxt":"G.kupi", "id":"q4"},
+
+    {"xpos":"10", "ypos":"3", "len":"1", "rng":"0:5", "dft":"0", "ltxt":"H.kupi", "id":"q5"},
+
+    {"xpos":"10", "ypos":"5", "len":"1", "rng":"0345", "dft":"0", "ltxt":"I.napi", "id":"q6"},
+
+    {"xpos":"10", "ypos":"7", "len":"9", "rng":"1:9", "mltc":"true", "vert":"true", "ltxt":"J.pije", "id":"q7_"},
+
+    {"xpos":"10", "ypos":"17", "len":"1", "rng":"0:8", "dft":"0", "ltxt":"K.pije", "id":"q8"}
+,
+
+    {"xpos":"10", "ypos":"1", "len":"8", "rng":"1:8", "mltc":"true", "vert":"true", "ltxt":"L.regu", "id":"q9_"},
+
+    {"xpos":"10", "ypos":"10", "len":"8", "rng":"1:8", "mltc":"true", "vert":"true", "ltxt":"M.rodz", "id":"q10_"},
+
+    {"xpos":"10", "ypos":"19", "len":"9", "rng":"1:9", "mltc":"true", "vert":"true", "ltxt":"N.spos", "id":"q11_"}
+  ]

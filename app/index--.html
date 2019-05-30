@@ -1,0 +1,187 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+
+          
+          <h3>serwisy</h3>
+          <h4>$http</h4>
+          <button ng-click="getDscFile();">getDscFile</button>
+          <h5>dscFile</h5>
+          <p class="frame">
+            {{dscFile}}
+          </p>
+          <p class="frame">
+            {{dscFileDscr}}
+          </p>
+          <table class="frame ftab">
+            <tr>
+              <td>field.id</td>
+              <td>field.xpos</td>
+              <td>field.ypos</td>
+              <td>field.len</td>
+              <td>field.rng</td>
+              <td>field.dft</td>
+              <td>field.lfill</td>
+              <td>field.ltxt</td>
+              <td>field.rtxt</td>
+              <td>field.flt.fld</td>
+              <td>field.flt.rng</td>
+            </tr>
+            <tr ng-repeat="field in dscFileTab">
+              <td>{{field.id}}</td>
+              <td>{{field.xpos}}</td>
+              <td>{{field.ypos}}</td>
+              <td>{{field.len}}</td>
+              <td>{{field.rng}}</td>
+              <td>{{field.dft}}</td>
+              <td>{{field.lfill}}</td>
+              <td>{{field.ltxt}}</td>
+              <td>{{field.rtxt}}</td>
+              <td>{{field.flt.fld}}</td>
+              <td>{{field.flt.rng}}</td>
+            </tr>
+          </table>
+
+          <h5>statusCode</h5>
+          <p class="frame">
+            {{statusCode}}
+          </p>
+          <h5>statusText</h5>
+          <p class="frame">
+            {{statusText}}
+          </p>
+
+          <h4>$location</h4>
+          <ul>
+            <li>absUrl = $location.absUrl() = {{absUrl}}</li>
+            <li>url = $location.url() = {{url}}</li>
+            <li>protocol = $location.protocol() = {{protocol}}</li>
+            <li>host = $location.host() = {{host}}</li>
+            <li>port = $location.port() = {{port}}</li>
+            <li>path = $location.path() = {{path}}</li>
+            <li>searchObject = $location.search() = {{searchObject}}</li>
+            <li>hash = $location.hash() = {{hash}}</li>
+          </ul>
+
+
+          <h4>$interval</h4>
+          <h5>{{counter}}</h5>
+
+          <h4>$timeout</h4>
+          <h5>{{teaout}}</h5>
+
+          <h4>własny</h4>
+
+
+          <h3>atrybuty</h3>
+          <table>
+            <tr><td>ng-disabled</td><td><a href="" ng-disabled="ng_disabled">ng-disabled="ng_disabled"</a></td><td><input type="checkbox" ng-model="ng_disabled" /></td></tr>
+            <tr><td>ng-show</td><td><span ng-show="ng_show">ng-show="true"</span></td><td><input type="checkbox" ng-model="ng_show" /></td></tr>
+            <tr><td>ng-hide</td><td><span ng-hide="ng_hide">ng-hide="false"</span></td><td><input type="checkbox" ng-model="ng_hide" /></td></tr>
+          </table>
+
+
+          <h3>zdarzenia</h3>
+          <ul>
+              <li>ng-blur</li>
+              <li>ng-change</li>
+              <li>ng-click</li>
+              <li>ng-copy</li>
+              <li>ng-cut</li>
+              <li>ng-dblclick</li>
+              <li>ng-focus</li>
+              <li>ng-keydown</li>
+              <li>ng-keypress</li>
+              <li>ng-keyup</li>
+              <li>ng-mousedown</li>
+              <li>ng-mouseenter</li>
+              <li>ng-mouseleave</li>
+              <li>ng-mousemove</li>
+              <li>ng-mouseover</li>
+              <li>ng-mouseup</li>
+              <li>ng-paste</li>
+            </ul>
+
+          <ul>
+            <li>ng-mouseover</li>
+            <li>ng-mouseenter</li>
+            <li>ng-mousemove</li>
+            <li>ng-mouseleave</li>
+            <li>ng-mousedown</li>
+            <li>ng-mouseup</li>
+            <li>ng-click</li>
+          </ul>
+
+
+          <h3>formularze</h3>
+          <form name="nazwaFormularza">
+            Adres email:
+            <input type="email" name="adresEmail" ng-model="cokolwiek">
+            <span ng-show="nazwaFormularza.adresEmail.$error.email">błędny addres</span>
+            <table>
+              <tr><td>nazwaFormularza.adresEmail.$valid=</td><td>[{{nazwaFormularza.adresEmail.$valid}}]</td></tr>
+              <tr><td>nazwaFormularza.adresEmail.$invalid=</td><td>[{{nazwaFormularza.adresEmail.$invalid}}]</td></tr>
+              <tr><td>nazwaFormularza.adresEmail.$touched=</td><td>[{{nazwaFormularza.adresEmail.$touched}}]</td></tr>
+              <tr><td>nazwaFormularza.adresEmail.$untouched=</td><td>[{{nazwaFormularza.adresEmail.$untouched}}]</td></tr>
+              <tr><td>nazwaFormularza.adresEmail.$pristine=</td><td>[{{nazwaFormularza.adresEmail.$pristine}}]</td></tr>
+              <tr><td>nazwaFormularza.adresEmail.$dirty=</td><td>[{{nazwaFormularza.adresEmail.$dirty}}]</td></tr>
+            </table>
+
+            <p>
+              Pole tekstowe <input type="text" ng-model="poleTextowe"> ===&gt;&gt; "{{poleTextowe}}"
+            </p>
+            <p>
+              Pole numeryczne <input type="number" ng-model="poleNumeryczne"style="width:{{poleNumeryczne}}rem;"> ===&gt;&gt; {{poleNumeryczne}}
+            </p>
+            <p>
+              Pola wielokrotnego wyboru<br />
+              Pole wyboru 1 <input type="checkbox" ng-model="poleWyboru1"> ===&gt;&gt; {{poleWyboru1}}<br />
+              Pole wyboru 2 <input type="checkbox" ng-model="poleWyboru2"> ===&gt;&gt; {{poleWyboru2}}<br />
+              Pole wyboru 3 <input type="checkbox" ng-model="poleWyboru3"> ===&gt;&gt; {{poleWyboru3}}
+            </p>
+            <p>Pola jednokrotnego wyboru<br />
+              Pole wyboru 1 <input type="radio" ng-model="poleWyboru" value="jeden"> ===&gt;&gt; {{poleWyboru}}<br />
+              Pole wyboru 2 <input type="radio" ng-model="poleWyboru" value="dwa"> ===&gt;&gt; {{poleWyboru}}<br />
+              Pole wyboru 3 <input type="radio" ng-model="poleWyboru" value="trzy"> ===&gt;&gt; {{poleWyboru}}
+            </p>
+            <p>
+              Selekcja: {{poleSelect}}
+              <select ng-model="poleSelect">
+                <option value=""></option>
+                <option value="pierwsze">pierwsze</option>
+                <option value="drugie">drugie</option>
+                <option value="trzecie">trzecie</option>
+                <option value="{{poleTextowe}}">{{poleTextowe}}</option>
+              </select>
+            </p>
+
+          </form>
+
+          <h3>include file</h3>
+          <div class="frame" ng-include="'akuku.html'">akuku.html</div>
+          <p>
+            Pole tekstowe z pliku akuku.html ===&gt;&gt; "{{poleTextoweAkuku}}"
+          </p>
+
+          <h3>routes</h3>
+          <p style="display:inline-block;">
+            <a style="border:1px solid green; padding: 0 2rem;" href="#/!">0</a>
+            <a style="border:1px solid green; padding: 0 2rem;" href="#!strona1">1</a>
+            <a style="border:1px solid green; padding: 0 2rem;" href="#!strona2">2</a>
+            <a style="border:1px solid green; padding: 0 2rem;" href="#!strona3">3</a>
+            <a style="border:1px solid green; padding: 0 2rem;" href="#!strona4">4</a>
+          </p>
+          <div class="frame" ng-view></div>
+
+          <h3>- {{$location.path()}} -</h3>

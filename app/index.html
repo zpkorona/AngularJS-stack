@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="nazwaAplikacjiApp">
+  <head>
+    <title>AngularJS Stack</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-animate.js"></script>
+
+    <script src="./app.js"></script>
+    <script src="./ctrls.js"></script>
+    <script src="./fltrs.js"></script>
+    <script src="./dirs.js"></script>
+    <script src="./routes.js"></script>
+    <style>
+    body {
+     font-family: Verdana, Helvetica, sans-serif;
+    }
+    h3::before {
+      border: 1px solid green;
+      content:" ";
+      display: table;
+      width:100%;
+    }
+    h4 {
+      border-top: 3px solid grey;
+      margin-top: 20px;
+    }
+    pre {
+      background-color: lightgrey;
+      padding: 1rem 1rem 0rem 1rem;
+    }
+    .example {
+      border: 3px solid silver;
+      font-size: 90%;
+      list-style-type: none;
+      padding: 1rem;
+    }
+    .frame {
+      border: 1px solid grey;
+    }
+    .ftab > tbody> tr:first-child {
+      color: green;
+    }
+    .ftab > tbody> tr:nth-child(2n) {
+      background-color: #f4f4f4;
+    }
+    .ftab > tbody > tr:nth-child(2n+1) > td:nth-child(odd) {
+      background-color: #eeeeee;
+    }
+    </style>
+  </head>
+  <body ng-controller="nazwaKontroleraCtrl" ng-init="nazwaPola='jakaś nazwa pola'">
+
+    <header class="row container-fluid d-flex align-content-center" style="height:60px">
+      <div class="col-lg-1 col-md-2 col-sm-3">
+        <img src="./img/angularjs-logo.png" width=100/>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <h1>Skład AngularJS</h1>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-5">
+        <a href="https://docs.angularjs.org">https://docs.angularjs.org</a>
+      </div>
+    </header>
+
+    <div class="container-fluid" style="position:fixed;top:60px;bottom:0px">
+      <div class="row h-100 flex-nowrap">
+        <div class="col-lg-2 col-md-3 col-sm-4 h-100 overflow-auto">
+          <nav id="sidenav" class="h-100">
+            <ul class="nav nav-pills flex-column" style="background-color:lightgrey;">
+              <li class="nav-item"><a class="nav-link" href="#ng-app">aplikacja</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ng-ctrl">kontrolery</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ng-model">pola, zmienne</a></li>
+              <li class="nav-item"><a class="nav-link" href="#rootScope">zmienne globalne</a></li>
+              <li class="nav-item"><a class="nav-link" href="#components">komponenty</a></il>
+              <li class="nav-item"><a class="nav-link" href="#ng-repeat">generowanie elementów</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ng-options">generowanie opcji</a></li>
+              <li class="nav-item"><a class="nav-link" href="#orderBylimitTo">filtrowanie, porządkowanie, formatowanie</a></li>
+              <li class="nav-item"><a class="nav-link" href="#http">serwis $http</a></li>
+              <li class="nav-item"><a class="nav-link" href="#location">serwis $location</a></li>
+              <li class="nav-item"><a class="nav-link" href="#intervaltimeout">serwisy $interval i $timeout</a></li>
+              <li class="nav-item"><a class="nav-link" href="#log">serwis $log</a></li>
+              <li class="nav-item"><a class="nav-link" href="#window">serwis $window</a></li>
+              <li class="nav-item"><a class="nav-link" href="#atrybuty">atrybuty</a></li>
+              <li class="nav-item"><a class="nav-link" href="#zdarzenia">zdarzenia</a></li>
+              <li class="nav-item"><a class="nav-link" href="#formularze">formularze</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ng-include">włączanie plików do dokumentu</a></li>
+              <li class="nav-item"><a class="nav-link" href="#ng-view">zmiana zawartości dokumentu</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="col col-lg-9 col-md-9 col-sm-8 h-100 overflow-auto" data-spy="scroll" data-target="#sidenav" data-offset="10" style="position:relative;">
+          <div class="container-fluid">
+            <h4 id="ng-app">aplikacja działająca na/w stronie <code>ng-app</code></h4>
+            <p>
+              Zadeklarowanie nazwy aplikacji AngularaJS.
+            </p>
+            <pre>
+index.html:
+    &lt;html ng-app="<i>nazwaAplikacjiApp</i>"&gt;
+
+app.js:
+    app = angular.module('nazwaAplikacjiApp', [<i>wykorzystywane moduły, np. 'ngRoute'</i>]);
+            </pre>
+
+            <h4 id="ng-ctrl">kontroler - funkcja kontrolujacą działanie wybranej części strony <code>ng-controller</code></h4>
+            <p>
+              Zadeklarowanie nazwy funkcji kontrolującą działanie w ramach <i>elementu</i>.
+            </p>
+            <pre>
+index.html:
+    &lt;<i>element</i> ng-controller="<i>nazwaKontroleraCtrl</i>" ...
+
+ctrls.js:
+    app.controller('nazwaKontroleraCtrl',
+                   [<i>wykorzystywane serwisy, np. $scope, '$http', ...</i>,
+                    function ($scope, $http, $location, $interval, $timeout) {
+      :
+    }]);
+            </pre>
+
+            <h4 id="ng-model">pola, zmienne <code>ng-model</code>,
+              <code>ng-init</code>,
+              <code>{</code><code>{...}</code><code>}</code>,
+              <code>ng-bind</code>,
+              <code>$scope</code>
+            </h4>
+            <p>
+              Związanie pola ze zmienną, nadanie wartości początkowej, pokazanie jej wartości.
+              Zmienne są dostępne w kontrolerze przypisanym do części strony zawartej w <i>elemencie</i>.
+            </p>
+            <pre>
+index.html:
+    &lt;input ng-model="<i>nazwaZmiennej</i>" ng-init=<i>"nazwaZmiennej=jakaś nazwa pola"</i> ...
+    ... &#123;&#123;<i>nazwaZmiennej</i>&#125;&#125; ...
+    ... &#123;&#123;<i>wyrażenie</i>&#125;&#125; ...
+    &lt;span ng-bind="<i>nazwaZmiennej</i>"&gt;&lt;/span&gt;
+
+module.js:
+    $scope.nazwaZmiennej = ...;
+            </pre>
+            <ul class="example">
+              <li>Proszę wpisać coś do pola <i>nazwaPola</i> <input type="text" ng-model="nazwaPola">, zawierajacego <code>ng-model</code></li>
+              <li>pole <i>nazwaPola</i> ma wartość = "<i>{<i></i>{nazwaPola}<i></i>}</i>", wyliczoną w <code>{{}}</code></li>
+              <li>pole <i>nazwaPola</i> można potraktować filtrem np. <code>| uppercase</code> = "<i>{<i></i>{nazwaPola | uppercase}<i></i>}</i>"</li>
+              <li>pole <i>nazwaPola</i> można <code>ng-bind</code> w span<i>ie</i>: <span ng-bind="nazwaPola"></span></li>
+              <li ng-init="nazwaPola1='jeden';nazwaPola2='dwa'">
+                pola można zainicjowane w <i>nazwaKontroleraCtrl</i> lub <code>ng-init</code> <span ></span> i uzyskać
+                nazwaPola1 = "<i>{{nazwaPola1}}</i>", nazwaPola2 = "<i>{{nazwaPola2}}</i>" oraz
+                nazwaPola1,nazwaPola2 = "<i>{{nazwaPola1+","+nazwaPola2}}</i>"
+              </li-->
+            </ul>
+
+
+            <h4 id="rootScope">zmienne globalne <code>$rootScope</code></h4>
+            <p>
+              Zmienne globalne dostępne również poza zasiągiem kontrolera.
+            </p>
+            <pre>
+index.html:
+    &lt;{{<i>zmiennaGlobalna</i>}}
+
+app.js:
+    $rootScope.zmiennaGlobalna = ...;
+            </pre>
+
+
+            <h4 id="filtery">filtry, np <code>| uppercase</code></h4>
+            <ul class="example">
+              <li>
+                Proszę cos wpisać w pole o zmiennej szerokości:
+                <input type="number" style="width:{{width}}rem;" ng-model="width" ng-init="width=10">
+              </li>
+              <li>po przepuszczeniu przez filtr waluty (<code>width | currency: "PLN":2</code>): {{width | currency: "PLN":2}}</li>
+            </ul>
+
+            <h4 id="components">komponenty</h4>
+            <p>
+              Tak sobie je nazwałem.<br />
+            </p>
+            <pre>
+index.html
+    nazwa-komponentu-a:&lt;span nazwa-komponentu-a&gt;tekst potraktowany atrybutem&lt;/span&gt;
+    nazwa-komponentu-e:&lt;nazwa-komponentu-e&gt;&lt;/nazwa-komponentu-e&gt;
+
+dirs.js
+  app.directive("nazwaKomponentuA", function() {
+    :
+  });
+            </pre>
+            <ul class="example">
+              <li>nazwa-komponentu-a:<span nazwa-komponentu-a>tekst potraktowany atrybutem</span></li>
+              <li>nazwa-komponentu-e:<nazwa-komponentu-e></nazwa-komponentu-e></li>
+            </ul>
+
+
+            <h4 id="ng-repeat">generowanie elementów np. list i tablic przez <code>ng-repeat</code></h4>
+            <pre>
+index.html
+    &lt;li ng-repeat="x in fibonums track by $index&gt; {<u></u>{ $index }} &rArr; {<u></u>{ x }}&lt;/li&gt;
+
+ctrls.js
+    $scope.fibinums=[1,1,2,3,5,8,13,21,34,55,89,144,...];//naprawdę to jest wyliczana
+            </pre>
+            <ul class="example">
+              <li ng-repeat="x in fibonums track by $index">
+                {{ $index }} &rArr; {{ x }}
+              </li>
+            </ul>
+
+            <h4 id="ng-options">generowanie opcji dla select za pomocą <code>ng-options</code></h4>
+            <pre>
+index.html
+    &lt;select ng-model="miastaOrder" ng-options="o for o in ['brak', 'nazwa', 'mieszk']"&gt;
+    &lt;/select&gt;
+            </pre>
+            <div class="example">
+              Uporządkowanie miast według:
+              <select ng-model="miastaOrder" ng-options="o for o in ['brak', 'nazwa', 'mieszk']">
+              </select>
+              <p>
+                Wybrany porządek: <u>{{miastaOrder}}</u>
+              </p>
+            </div>
+            <div class="example">
+              Wybór zwierza:
+              <select ng-model="wybranyZwierz" ng-options="zwierz for (zwierz, opis) in zwierza">
+              </select>
+              {{wybranyZwierz.typ}}, waga {{wybranyZwierz.waga}} jest {{wybranyZwierz.kolor}}
+            </div>
+
+            <h4 id="orderBylimitTo">filtrowanie, porządkowanie, formatowanie <code>orderBy</code>, <code>limitTo</code>, <code>ng-if</code></h4>
+            <pre>
+index.html:
+    &lt;tr ng-repeat="miasto in miasta | orderBy:miastaOrder | limitTo:miastaLimit
+      &lt;td ng-if="$odd" style="... {<u></u>{miasto.nazwa | nazwaFiltra}}
+            </pre>
+            <div class="example">
+              <p>
+                Wybrany porządek: <u>{{miastaOrder}}</u>
+              </p>
+              <p>
+                Liczba wyświetlanych miast: <input type="number" ng-model="miastaLimit" ng-init="miastaLimit=10" style="width:4rem">
+              </p>
+              <table>
+                <tr style="cursor:arrow;">
+                  <td ng-click="miastaOrder='miasto'" style="width:10rem">miasto</td>
+                  <td ng-click="miastaOrder='mieszk'" style="width:10rem">l.mieszk</td></tr>
+                <tr ng-repeat="miasto in miasta | orderBy:miastaOrder | limitTo:miastaLimit">
+                  <td ng-if="$odd" style="background-color:grey">{{miasto.nazwa | nazwaFiltra}}</td>
+                  <td ng-if="$even">{{miasto.nazwa | nazwaFiltra}}</td>
+                  <td ng-if="$odd">{{miasto.mieszk}} </td>
+                  <td ng-if="$even" style="background-color:silver">{{miasto.mieszk}} </td>
+                </tr>
+              </table>
+            </div>
+
+
+            <h4 id="http">serwis <code>$http</code></h4>
+            <p>
+              AngularJS oferuje całe stado serwisów, ale ten jest chyba najważniejszy.
+            </p>
+            <pre>
+index.html:
+    ... ng-click="getDscFile();" ...
+    {<u></u>{dscFile}}
+
+ctrl.js
+    $scope.getDscFile = function () {
+            </pre>
+            <div class="example">
+              <button ng-click="getDscFile();">wczytaj dscFile json file</button>
+              <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                  dscFile:
+                </div>
+                <div class="frame col-lg-10 col-md-9">
+                  {{dscFile}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                  dscFileDscr:
+                </div>
+                <div class="frame col-lg-10 col-md-9">
+                  {{dscFileDscr}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                  dscFileTab:
+                </div>
+                <div class="col-lg-10 col-md-9 frame">
+                  <table class="ftab">
+                    <tr>
+                      <td>field.id</td>
+                      <td>field.xpos</td>
+                      <td>field.ypos</td>
+                      <td>field.len</td>
+                      <td>field.rng</td>
+                      <td>field.dft</td>
+                      <td>field.lfill</td>
+                      <td>field.ltxt</td>
+                      <td>field.rtxt</td>
+                      <td>field.flt.fld</td>
+                      <td>field.flt.rng</td>
+                    </tr>
+                    <tr ng-repeat="field in dscFileTab">
+                      <td>{{field.id}}</td>
+                      <td>{{field.xpos}}</td>
+                      <td>{{field.ypos}}</td>
+                      <td>{{field.len}}</td>
+                      <td>{{field.rng}}</td>
+                      <td>{{field.dft}}</td>
+                      <td>{{field.lfill}}</td>
+                      <td>{{field.ltxt}}</td>
+                      <td>{{field.rtxt}}</td>
+                      <td>{{field.flt.fld}}</td>
+                      <td>{{field.flt.rng}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                  statusCode:
+                </div>
+                <div class="frame col-lg-10 col-md-9">
+                  {{statusCode}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4">
+                  statusText:
+                </div>
+                <div class="frame col-lg-10 col-md-9">
+                  {{statusText}}
+                </div>
+              </div>
+            </div>
+
+
+            <h4 id="location">serwis <code>$location</code></h4>
+            <p>
+              To samo można uzyskać w js, ale AngularJS lubi swoje.
+            </p>
+            <ul class="example">
+              <li>$location.absUrl() = "{{absUrl}}"</li>
+              <li>$location.url() = "{{url}}</li>
+              <li>$location.protocol() = "{{protocol}}"</li>
+              <li>$location.host() = "{{host}}"</li>
+              <li>$location.port() = "{{port}}"</li>
+              <li>$location.path() = "{{path}}"</li>
+              <li>$location.search() = "{{searchObject}}"</li>
+              <li>$location.hash() = "{{hash}}"</li>
+            </ul>
+
+
+            <h4 id="intervaltimeout">serwisy <code>$interval</code> i <code>timeout</code></h4>
+            <p>
+              To samo można uzyskać w js, ale AngularJS lubi swoje.
+            </p>
+            <pre>
+ctrls.js:
+    $interval(() => {$scope.counter++;}, 1000);
+    $timeout(() => {$scope.teaout += " out";}, 10000);
+            </pre>
+            <p class="example">
+              <button ng-click="startInterval();">uruchom interval 1sek</button> counter={{counter}}<br /><br />
+              <button ng-click="startTimeout();">uruchom timeout 10sek</button> teaout={{teaout}}
+            </p>
+
+
+            <h4 id="log">serwis <code>$log</code></h4>
+            <p>
+              Zamiast window.console.log()
+            </p>
+            <pre>
+crls.js:
+    $log.log('komentarze');
+    $log.error('błedy');
+    $log.info('informacje');
+    $log.warn('ostrzeżenia');
+    $log.debug('śledzenie');
+            </pre>
+
+            <p class="example">
+              <button ng-click="sendLogs();">sendLogs</button>
+            </p>
+
+
+            <h4 id="window">serwis <code>$window</code></h4>
+            <p>
+              AngularJS woli tak: $window.alert(), $window.prompt()
+            </p>
+            <p class="example">
+              <button ng-click="sendAlert('$window.alert');">$window.alert</button><br /><br />
+              <button ng-click="sendPrompt('$window.promp');">$window.prompt</button>
+            </p>
+
+
+            <h4 id="atrybuty">atrybuty <code>ng-disabled</code>, <code>ng-show</code>, <code>ng-hide</code></h4>
+            <p class="example">
+              <table>
+                <tr><td>ng-disabled</td><td><a href="" ng-disabled="ng_disabled">ng-disabled="ng_disabled"</a></td><td><input type="checkbox" ng-model="ng_disabled" /></td></tr>
+                <tr><td>ng-show</td><td><span ng-show="ng_show">ng-show="true"</span></td><td><input type="checkbox" ng-model="ng_show" /></td></tr>
+                <tr><td>ng-hide</td><td><span ng-hide="ng_hide">ng-hide="false"</span></td><td><input type="checkbox" ng-model="ng_hide" /></td></tr>
+              </table>
+            </p>
+
+
+            <h4 id="zdarzenia">zdarzenia</h4>
+            <ul style="list-style:none;">
+              <li>ng-blur</li>
+              <li>ng-change</li>
+              <li>ng-click</li>
+              <li>ng-copy</li>
+              <li>ng-cut</li>
+              <li>ng-dblclick</li>
+              <li>ng-focus</li>
+              <li>ng-keydown</li>
+              <li>ng-keypress</li>
+              <li>ng-keyup</li>
+              <li>ng-mousedown</li>
+              <li>ng-mouseenter</li>
+              <li>ng-mouseleave</li>
+              <li>ng-mousemove</li>
+              <li>ng-mouseover</li>
+              <li>ng-mouseup</li>
+              <li>ng-paste</li>
+              <li>ng-mouseover</li>
+              <li>ng-mouseenter</li>
+              <li>ng-mousemove</li>
+              <li>ng-mouseleave</li>
+              <li>ng-mousedown</li>
+              <li>ng-mouseup</li>
+              <li>ng-click</li>
+            </ul>
+            <pre>
+index.html:
+    &lit;button ng-click="sendLogs('coś tam');"...
+crls.js:
+    $scope.sendLogs = function (text) {...};
+            </pre>
+
+
+            <h4 id="formularze">formularze</h4>
+            <div class="example">
+              <form name="nazwaFormularza">
+                <div class="frame">
+                  Adres email:
+                  <input type="email" name="adresEmail" ng-model="cokolwiek">
+                  <span ng-show="nazwaFormularza.adresEmail.$error.email">błędny addres</span>
+                  <table>
+                    <tr><td>nazwaFormularza.adresEmail.$valid=</td><td>[{{nazwaFormularza.adresEmail.$valid}}]</td></tr>
+                    <tr><td>nazwaFormularza.adresEmail.$invalid=</td><td>[{{nazwaFormularza.adresEmail.$invalid}}]</td></tr>
+                    <tr><td>nazwaFormularza.adresEmail.$touched=</td><td>[{{nazwaFormularza.adresEmail.$touched}}]</td></tr>
+                    <tr><td>nazwaFormularza.adresEmail.$untouched=</td><td>[{{nazwaFormularza.adresEmail.$untouched}}]</td></tr>
+                    <tr><td>nazwaFormularza.adresEmail.$pristine=</td><td>[{{nazwaFormularza.adresEmail.$pristine}}]</td></tr>
+                    <tr><td>nazwaFormularza.adresEmail.$dirty=</td><td>[{{nazwaFormularza.adresEmail.$dirty}}]</td></tr>
+                  </table>
+                </div>
+                <br />
+                <p class="frame">
+                  Pole tekstowe <input type="text" ng-model="poleTextowe"> ===&gt;&gt; "{{poleTextowe}}"<br />
+                  Pole numeryczne <input type="number" ng-model="poleNumeryczne"style="width:{{poleNumeryczne}}rem;"> ===&gt;&gt; {{poleNumeryczne}}<br />
+                  Selekcja: {{poleSelect}}
+                  <select ng-model="poleSelect">
+                    <option value=""></option>
+                    <option value="pierwsze">pierwsze</option>
+                    <option value="drugie">drugie</option>
+                    <option value="trzecie">trzecie</option>
+                    <option value="{{poleTextowe}}">{{poleTextowe}}</option>
+                  </select>
+                </p>
+                <ul class="frame" style="list-style:none;">
+                  Pola wielokrotnego wyboru
+                  <li>Pole wyboru 1 <input type="checkbox" ng-model="poleWyboru1"> ===&gt;&gt; {{poleWyboru1}}</li>
+                    <li>Pole wyboru 2 <input type="checkbox" ng-model="poleWyboru2"> ===&gt;&gt; {{poleWyboru2}}</li>
+                      <li>Pole wyboru 3 <input type="checkbox" ng-model="poleWyboru3"> ===&gt;&gt; {{poleWyboru3}}</li>
+
+                </ul>
+                <ul class="frame" style="list-style:none;">
+                  Pola jednokrotnego wyboru<br />
+                    <li>Pole wyboru 1 <input type="radio" ng-model="poleWyboru" value="jeden"> ===&gt;&gt; {{poleWyboru}}</li>
+                    <li>Pole wyboru 2 <input type="radio" ng-model="poleWyboru" value="dwa"> ===&gt;&gt; {{poleWyboru}}</li>
+                    <li>Pole wyboru 3 <input type="radio" ng-model="poleWyboru" value="trzy"> ===&gt;&gt; {{poleWyboru}}</li>
+                </ul>
+              </form>
+            </div>
+
+            <h4 id="ng-include">włączanie plików do dokumentu <code>ng-include</code></h4>
+            <pre>
+index.html:
+    &lt;div class="frame" ng-include="'akuku.html'"&gt;akuku.html&lt;/div&gt;
+            </pre>
+            <div class="frame" ng-include="'akuku.html'">akuku.html</div>
+            <p>
+              Pole tekstowe z pliku akuku.html ===&gt;&gt; "{{poleTekstoweAkuku}}"
+            </p>
+
+            <h4 id="ng-view">zmiana zawartości dokumentu <code>ng-view</code></h4>
+            <pre>
+index.html:
+    &lt;div class="frame" ng-view&gt;&lt;/div&gt;
+routes.js:
+    app.config(function($routeProvider) {
+      $routeProvider
+        .when("/", {
+          templateUrl : "main.html",
+          controller : "mainCtrl" ....
+ctrls.js:
+  app.controller("mainCtrl", function ($scope, $location) {...
+            </pre>
+            <div class="example">
+              <div style="display:inline-block;">
+                <a style="border:1px solid green; padding: 0 2rem;" href="#/!">0</a>
+                <a style="border:1px solid green; padding: 0 2rem;" href="#!strona1">1</a>
+                <a style="border:1px solid green; padding: 0 2rem;" href="#!strona2">2</a>
+                <a style="border:1px solid green; padding: 0 2rem;" href="#!strona3">3</a>
+                <a style="border:1px solid green; padding: 0 2rem;" href="#!strona4">4</a>
+              </div>
+              <div class="frame" ng-view></div>
+            </div>
+
+            <h4> </h4>
+
+          </div>
+        </div>
+        <div class="col">
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
