@@ -18,7 +18,7 @@
     body {
      font-family: Verdana, Helvetica, sans-serif;
     }
-    h3::before {
+    h2::before {
       border: 1px solid green;
       content:" ";
       display: table;
@@ -55,20 +55,21 @@
   <body ng-controller="nazwaKontroleraCtrl" ng-init="nazwaPola='jakaś nazwa pola'">
 
     <header class="row container-fluid d-flex align-content-center" style="height:60px">
-      <div class="col-lg-1 col-md-2 col-sm-3">
+      <div class="col-lg-1 col-md-2 d-md-block d-none">
         <img src="./img/angularjs-logo.png" width=100/>
       </div>
       <div class="col d-flex justify-content-center">
-        <h1>Skład AngularJS</h1>
+        <h1 class="d-md-block d-none">Skład AngularJS</h1>
+        <h3 class="d-md-none d-block">Skład AngularJS</h3>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-5 col-xs-none">
+      <div class="col-lg-3 col-md-4 d-md-block d-none">
         <a href="https://docs.angularjs.org">https://docs.angularjs.org</a>
       </div>
     </header>
 
     <div class="container-fluid" style="position:fixed;top:60px;bottom:0px">
       <div class="row h-100 flex-nowrap">
-        <div class="col-lg-2 col-md-3 col-sm-none h-100 overflow-auto">
+        <div class="col-md-3 d-md-block d-none h-100 overflow-auto">
           <nav id="sidenav" class="h-100">
             <ul class="nav nav-pills flex-column" style="background-color:lightgrey;">
               <li class="nav-item"><a class="nav-link" href="#ng-app">aplikacja</a></li>
@@ -93,7 +94,7 @@
           </nav>
         </div>
 
-        <div class="col col-lg-9 col-md-9 col-12 h-100 overflow-auto" data-spy="scroll" data-target="#sidenav" data-offset="10" style="position:relative;">
+        <div class="col-md-9 col-sm-12 h-100 overflow-auto" data-spy="scroll" data-target="#sidenav" data-offset="10" style="position:relative;">
           <div class="container-fluid">
             <h4 id="ng-app">aplikacja działająca na/w stronie <code>ng-app</code></h4>
             <p>
@@ -530,9 +531,6 @@ ctrls.js:
             <h4> </h4>
 
           </div>
-        </div>
-        <div class="col-md-none">
-          
         </div>
       </div>
     </div>
