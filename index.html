@@ -148,12 +148,12 @@ nowy-komponent.component.js:
         templateUrl: 'nowy-komponent.template.html',
         controller: ['$http', function nowyKomponentController($http) {
           var self = this;//to się bardzo przydaje w funkcjach
-          self.nazwaPolaJakas = 'coś tam';
+          <u>this</u>.nazwaPolaJakas = 'coś tam';
         }]
       });
 nowy-komponent.template.html:
     &lt;div&gt;
-      {<u></u>{<i>ctrl.nazwaPolaJakas</i>}}
+      {<u></u>{<i><u>ctrl</u>.nazwaPolaJakas</i>}}
             </pre>
             <p class="example">
               <i>jakiś przykład by się przydał...</i>
@@ -172,7 +172,6 @@ index.html:
     ... &#123;&#123;<i>nazwaZmiennej</i>&#125;&#125; ...
     ... &#123;&#123;<i>wyrażenie</i>&#125;&#125; ...
     &lt;span ng-bind="<i>nazwaZmiennej</i>"&gt;&lt;/span&gt;
-
 module.js:
     $scope.nazwaZmiennej = ...;
             </pre>
