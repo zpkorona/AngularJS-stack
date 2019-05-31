@@ -74,7 +74,7 @@
             <ul class="nav nav-pills flex-column" style="background-color:lightgrey;">
               <li class="nav-item"><a class="nav-link" href="#ng-app">aplikacja</a></li>
               <li class="nav-item"><a class="nav-link" href="#ng-ctrl">kontrolery</a></li>
-              <li class="nav-item"><a class="nav-link" href="#component">nowe komponenty</a></li>
+              <li class="nav-item"><a class="nav-link" href="#component">komponenty</a></li>
               <li class="nav-item"><a class="nav-link" href="#ng-model">pola, zmienne</a></li>
               <li class="nav-item"><a class="nav-link" href="#rootScope">zmienne globalne</a></li>
               <li class="nav-item"><a class="nav-link" href="#directives">dyrektywy</a></il>
@@ -130,9 +130,9 @@ ctrls.js:
             </pre>
 
 
-            <h4 id="component">nowe komponenty</h4>
+            <h4 id="component">komponenty</h4>
             <p>
-              Zdefiniowanie komponentu <i>nowyKomponent</i> do wykorzystania na stronie w formie
+              Zdefiniowanie nowego komponentu <i>nowyKomponent</i> do wykorzystania na stronie w formie
               <i>&lt;nowy-komponent&gt;&lt;/nowy-komponent&gt;</i>, którego wygląd definiuje 
               <i>template</i>, a "zachowanie" funkcja <i>controler</i>.
             </p>
@@ -152,10 +152,12 @@ nowy-komponent.component.js:
         }]
       });
 nowy-komponent.template.html:
-    <div>
-      {{ctrl.nazwaPolaJakas}}
+    &lt;div&gt;
+      {<u></u>{<i>ctrl.nazwaPolaJakas</i>}}
             </pre>
-
+            <p class="example">
+              <i>jakiś przykład by się przydał...</i>
+            </p>
 
             <h4 id="ng-model">
               pola, zmienne <code>ng-model</code>, <code>ng-init</code>, <code>{<u></u>{...}}</code>, <code>ng-bind</code>, <code>$scope</code>
