@@ -77,7 +77,7 @@
               <li class="nav-item"><a class="nav-link" href="#component">nowe komponenty</a></li>
               <li class="nav-item"><a class="nav-link" href="#ng-model">pola, zmienne</a></li>
               <li class="nav-item"><a class="nav-link" href="#rootScope">zmienne globalne</a></li>
-              <li class="nav-item"><a class="nav-link" href="#components">komponenty</a></il>
+              <li class="nav-item"><a class="nav-link" href="#directives">dyrektywy</a></il>
               <li class="nav-item"><a class="nav-link" href="#ng-repeat">generowanie elementów</a></li>
               <li class="nav-item"><a class="nav-link" href="#ng-options">generowanie opcji</a></li>
               <li class="nav-item"><a class="nav-link" href="#orderBylimitTo">filtrowanie, porządkowanie, formatowanie</a></li>
@@ -109,6 +109,7 @@ app.js:
     app = angular.module('nazwaAplikacjiApp', [<i>wykorzystywane moduły, np. 'ngRoute'</i>]);
             </pre>
 
+
             <h4 id="ng-ctrl">kontroler - funkcja kontrolujacą działanie wybranej części strony <code>ng-controller</code></h4>
             <p>
               Zadeklarowanie nazwy funkcji kontrolującą działanie w ramach <i>elementu</i> (body, div, itp.), 
@@ -127,6 +128,7 @@ ctrls.js:
       :
     }]);
             </pre>
+
 
             <h4 id="component">nowe komponenty</h4>
             <p>
@@ -153,6 +155,7 @@ nowy-komponent.template.html:
     <div>
       {{ctrl.nazwaPolaJakas}}
             </pre>
+
 
             <h4 id="ng-model">
               pola, zmienne <code>ng-model</code>, <code>ng-init</code>, <code>{<u></u>{...}}</code>, <code>ng-bind</code>, <code>$scope</code>
@@ -206,23 +209,24 @@ app.js:
               <li>po przepuszczeniu przez filtr waluty (<code>width | currency: "PLN":2</code>): {{width | currency: "PLN":2}}</li>
             </ul>
 
-            <h4 id="components">komponenty</h4>
+
+            <h4 id="directives">dyrektywy</h4>
             <p>
               Tak sobie je nazwałem.<br />
             </p>
             <pre>
 index.html
-    nazwa-komponentu-a:&lt;span nazwa-komponentu-a&gt;tekst potraktowany atrybutem&lt;/span&gt;
-    nazwa-komponentu-e:&lt;nazwa-komponentu-e&gt;&lt;/nazwa-komponentu-e&gt;
+    nazwa-dyrektywy-a:&lt;span nazwa-dyrektywy-a&gt;tekst potraktowany atrybutem&lt;/span&gt;
+    nazwa-dyrektywy-e:&lt;nazwa-dyrektywy-e&gt;&lt;/nazwa-dyrektywy-e&gt;
 
 dirs.js
-  app.directive("nazwaKomponentuA", function() {
+  app.directive("nazwaDyrektywyA", function() {
     :
   });
             </pre>
             <ul class="example">
-              <li>nazwa-komponentu-a:<span nazwa-komponentu-a>tekst potraktowany atrybutem</span></li>
-              <li>nazwa-komponentu-e:<nazwa-komponentu-e></nazwa-komponentu-e></li>
+              <li>nazwa-dyrektywy-a:<span nazwa-dyrektywy-a>tekst potraktowany atrybutem</span></li>
+              <li>nazwa-dyrektywy-e:<nazwa-dyrektywy-e></nazwa-dyrektywy-e></li>
             </ul>
 
 
