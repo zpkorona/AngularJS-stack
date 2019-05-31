@@ -74,6 +74,7 @@
             <ul class="nav nav-pills flex-column" style="background-color:lightgrey;">
               <li class="nav-item"><a class="nav-link" href="#ng-app">aplikacja</a></li>
               <li class="nav-item"><a class="nav-link" href="#ng-ctrl">kontrolery</a></li>
+              <li class="nav-item"><a class="nav-link" href="#component">nowe komponenty</a></li>
               <li class="nav-item"><a class="nav-link" href="#ng-model">pola, zmienne</a></li>
               <li class="nav-item"><a class="nav-link" href="#rootScope">zmienne globalne</a></li>
               <li class="nav-item"><a class="nav-link" href="#components">komponenty</a></il>
@@ -110,7 +111,10 @@ app.js:
 
             <h4 id="ng-ctrl">kontroler - funkcja kontrolujacą działanie wybranej części strony <code>ng-controller</code></h4>
             <p>
-              Zadeklarowanie nazwy funkcji kontrolującą działanie w ramach <i>elementu</i>.
+              Zadeklarowanie nazwy funkcji kontrolującą działanie w ramach <i>elementu</i> (body, div, itp.), 
+              kontroluje kontroluje zmienne wykorzystywane w <code>ng-model</code>, czy <code>{<u></u>{...}}</code>.<br />
+              Deklaruje również funkcje wykorzystywane do obsługi zdarzeń, np w <code>ng-click</code>.<br />
+              Zmienne dostępne są przez obiekt <code>$scope</code>.
             </p>
             <pre>
 index.html:
@@ -124,11 +128,34 @@ ctrls.js:
     }]);
             </pre>
 
-            <h4 id="ng-model">pola, zmienne <code>ng-model</code>,
-              <code>ng-init</code>,
-              <code>{</code><code>{...}</code><code>}</code>,
-              <code>ng-bind</code>,
-              <code>$scope</code>
+            <h4 id="component">nowe komponenty</h4>
+            <p>
+              Zdefiniowanie komponentu <i>nowyKomponent</i> do wykorzystania na stronie w formie
+              <i>&lt;nowy-komponent&gt;&lt;/nowy-komponent&gt;</i>, którego wygląd definiuje 
+              <i>template</i>, a "zachowanie" funkcja <i>controler</i>.
+            </p>
+            <pre>
+index.html:
+    &lt;<i>nowy-komponent</i>&gt;&lt;/<i>nowy-komponent&gt;</i>
+app.js:
+    angular.module('nazwaAplikacjiApp', ['nowyKomponent', ...]);
+nowy-komponent.component.js:
+    angular.
+      module('nowyKomponent').
+      component('nowyKomponent', {
+        templateUrl: 'nowy-komponent.template.html',
+        controller: ['$http', function nowyKomponentController($http) {
+          var self = this;//to się bardzo przydaje w funkcjach
+          self.nazwaPolaJakas = 'coś tam';
+        }]
+      });
+nowy-komponent.template.html:
+    <div>
+      {{ctrl.nazwaPolaJakas}}
+            </pre>
+
+            <h4 id="ng-model">
+              pola, zmienne <code>ng-model</code>, <code>ng-init</code>, <code>{<u></u>{...}}</code>, <code>ng-bind</code>, <code>$scope</code>
             </h4>
             <p>
               Związanie pola ze zmienną, nadanie wartości początkowej, pokazanie jej wartości.
