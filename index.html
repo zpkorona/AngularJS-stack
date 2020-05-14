@@ -4,10 +4,19 @@
     <title>AngularJS Stack</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-animate.js"></script>
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script-->
+    <!--script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.js"></script>
 
     <script src="./app.js"></script>
     <script src="./ctrls.js"></script>
@@ -112,7 +121,7 @@ app.js:
 
             <h4 id="ng-ctrl">kontroler - funkcja kontrolujacą działanie wybranej części strony <code>ng-controller</code></h4>
             <p>
-              Zadeklarowanie nazwy funkcji kontrolującą działanie w ramach <i>elementu</i> (body, div, itp.), 
+              Zadeklarowanie nazwy funkcji kontrolującą działanie w ramach <i>elementu</i> (body, div, itp.),
               kontroluje kontroluje zmienne wykorzystywane w <code>ng-model</code>, czy <code>{<u></u>{...}}</code>.<br />
               Deklaruje również funkcje wykorzystywane do obsługi zdarzeń, np w <code>ng-click</code>.<br />
               Zmienne dostępne są przez obiekt <code>$scope</code>.
@@ -133,7 +142,7 @@ ctrls.js:
             <h4 id="component">komponenty</h4>
             <p>
               Zdefiniowanie nowego komponentu <i>nowyKomponent</i> do wykorzystania na stronie w formie
-              <i>&lt;nowy-komponent&gt;&lt;/nowy-komponent&gt;</i>, którego wygląd definiuje 
+              <i>&lt;nowy-komponent&gt;&lt;/nowy-komponent&gt;</i>, którego wygląd definiuje
               <i>template</i>, a "zachowanie" funkcja <i>controler</i>.
             </p>
             <pre>
@@ -237,13 +246,16 @@ index.html
     &lt;li ng-repeat="x in fibonums track by $index&gt; {<u></u>{ $index }} &rArr; {<u></u>{ x }}&lt;/li&gt;
 
 ctrls.js
-    $scope.fibinums=[1,1,2,3,5,8,13,21,34,55,89,144,...];//naprawdę to jest wyliczana
+    $scope.fibonums=[1,1,2,3,5,8,13,21,34,55,89,144,...];//naprawdę to jest wyliczana
             </pre>
             <ul class="example">
               <li ng-repeat="x in fibonums track by $index">
                 {{ $index }} &rArr; {{ x }}
               </li>
             </ul>
+            <select>
+              <option ng-repeat="x in fibonums track by $index">{{ $index }} &rArr; {{ x }}</option>
+            </select>
 
             <h4 id="ng-options">generowanie opcji dla select za pomocą <code>ng-options</code></h4>
             <pre>
@@ -567,7 +579,5 @@ ctrls.js:
       </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
